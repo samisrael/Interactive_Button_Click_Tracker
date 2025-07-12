@@ -1,5 +1,5 @@
 # Interactive_Button_Click_Tracker
-## Date:
+## Date: 12/07/2025
 ## Objective:
 To implement a counter using JavaScript closures and demonstrate how variables maintain their state across function calls, emphasizing the concepts of function scope and lexical closures.
 
@@ -30,9 +30,75 @@ Use this closure to track how many times the button has been clicked
 
 Update the DOM each time the button is clicked using the closure function
 ## HTML Code:
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" ></script>
+    <title>Button Click Tracker</title>
+  </head>
+  <body>
+    <section class="container">
+      <h1>Click Counter</h1>
+      <button onclick="handleClick()">Click Me</button>
+      <div id="result"></div>
+    </section>
+  </body>
+</html>
+```
 ## CSS Code:
+```css
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container button{
+    padding: 2em;
+    border: #ffffff 1px solid;
+    background-color: rgb(171, 184, 0);
+    color: white;
+    border-radius: 50%;
+}
+.container button:hover{
+    cursor: pointer;
+}
+#result{
+    margin: 20px;
+    
+}
+```
 ## JavaScript Code:
-## Output:
+```js
 
+function createCounter() {
+  let count = 0;
+
+  return function () {
+    count++;
+    return count;
+  };
+}
+const counter = createCounter();
+
+function handleClick() {
+  const resultDiv = document.getElementById("result");
+  const currentCount = counter();
+  resultDiv.textContent = `Count: ${currentCount}`;
+}
+
+```
+## Output:
+![alt text](image.png)
 ## Result:
 A mini module using JavaScript closure and scope is successfully implemented to build an interactive button click tracker that updates in real time without exposing internal variables.
